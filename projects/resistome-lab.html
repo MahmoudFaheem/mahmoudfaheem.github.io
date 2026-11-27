@@ -179,40 +179,23 @@
         <!-- 8-Part Academic Project Breakdown -->
         <div class="space-y-10 text-base font-serif text-ink-800 dark:text-ink-200 leading-relaxed">
             <section class="space-y-2">
-                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">1. Scientific Background &amp; Research Question</h2>
-                <p>Quantifying antimicrobial resistance determinants and evaluating their mobility potential across bacterial genomes and complex metagenomes requires standardized, reproducible command-line workflows rather than ad-hoc manual steps.</p>
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">1. Scientific Background</h2>
+                <p>Antimicrobial resistance genes can spread and evolve through different genetic mechanisms. Understanding their diversity, genomic context, and association with mobile genetic elements is important for studying the dissemination of antimicrobial resistance.</p>
             </section>
 
             <section class="space-y-2">
                 <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">2. Objectives</h2>
-                <ul class="list-disc list-inside space-y-1.5"><li>Develop modular command-line pipelines for read-based and assembly-based resistome profiling.</li><li>Automate mobile genetic element (MGE) signature detection and quantitative mobility risk assessment on genomic contigs.</li><li>Provide reproducible statistical visualization scripts in R and Python for microbiome and resistome datasets.</li></ul>
+                <p>The main objective is to develop and provide practical, reproducible tools and methods for analyzing antimicrobial resistance, studying resistome diversity, and investigating the genetic factors involved in the spread of resistance.</p>
             </section>
 
             <section class="space-y-2">
-                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">3. Specific Contribution</h2>
-                <p>Founder and Lead Developer of the Resistome-Lab GitHub organization. Architecting command-line utilities, HMM signature screening workflows, and downstream statistical analysis scripts.</p>
-            </section>
-
-            <section class="space-y-2">
-                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">4. Methodology &amp; Technologies</h2>
-                <p>Built around Unix/Linux command-line environments combining Python, R, Bash, and AWK with standard bioinformatics engines including Bowtie2, DIAMOND, SAMtools, BEDTools, and CARD reference databases.</p>
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">4. Methodology</h2>
+                <p>Built around Unix/Linux command-line environments combining Python, R, Bash, and AWK with standard bioinformatics tools including Bowtie2, DIAMOND, SAMtools, BEDTools, and CARD reference databases.</p>
             </section>
 
             <section class="space-y-2">
                 <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">5. Key Outputs &amp; Results</h2>
-                <ul class="list-disc list-inside space-y-1.5"><li>Publicly accessible repositories under <a href='https://github.com/Resistome-lab' target='_blank' rel='noopener noreferrer' class='editorial-link'>github.com/Resistome-lab</a> supporting contig mobility scoring, resistome mapping, and statistical reporting.</li><li>Reusable command-line templates for reproducible microbial genomics analysis.</li></ul>
-            </section>
-
-            <section class="space-y-3">
-                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">6. System Architecture &amp; Data Flow</h2>
-                <div class="p-5 rounded border border-ink-200 dark:border-ink-800 bg-warmcard dark:bg-darkcard font-mono text-xs text-ink-700 dark:text-ink-300 overflow-x-auto leading-relaxed">
-                    [Raw Sequencing Reads / Contigs (FASTQ/FASTA)] &rarr; [Alignment &amp; Profiling (Bowtie2 / DIAMOND / CARD)] &rarr; [MGE &amp; Mobility Scoring] &rarr; [Statistical Analysis &amp; Visualization (R / Python)]
-                </div>
-            </section>
-
-            <section class="space-y-2">
-                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">7. Related Presentations &amp; Scholarship</h2>
-                <p>Supports ongoing MSc thesis research in microbial genomics and resistome profiling at the Faculty of Pharmacy, Ain Shams University.</p>
+                <ul class="list-disc list-inside space-y-1.5"><li>Publicly accessible repositories under <a href='https://github.com/Resistome-lab' target='_blank' rel='noopener noreferrer' class='editorial-link'>github.com/Resistome-lab</a> supporting resistome profiling and contig mobility scoring.</li></ul>
             </section>
         </div>
     </main>
@@ -221,10 +204,7 @@
     <footer class="no-print mt-20 border-t border-ink-200/60 dark:border-ink-800/60 py-8 bg-warmbg dark:bg-darkbg text-xs font-mono text-ink-500">
         <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
             <div>
-                &copy; <span id="yearSpan"></span> Mahmoud Faheem Mohamed Faheem
-            </div>
-            <div class="text-[11px] text-ink-400">
-                Microbial Genomics &bull; Antimicrobial Resistance &bull; Computational Biology
+                &copy; <span id="yearSpan"></span> Resistome-Lab
             </div>
         </div>
     </footer>
