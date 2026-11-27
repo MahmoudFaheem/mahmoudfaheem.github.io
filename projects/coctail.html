@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <title>COCTAIL – COVID-19 Clinical Trial and Intervention Literature Hub | Mahmoud Faheem</title>
+    <meta name="description" content="An evidence-based literature repository mapping PubMed-indexed COVID-19 clinical and epidemiological trials.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        warmbg: '#faf9f6',
+                        warmcard: '#ffffff',
+                        darkbg: '#0f1115',
+                        darkcard: '#16181d',
+                        ink: {
+                            900: '#151618',
+                            800: '#26282c',
+                            700: '#3e4147',
+                            600: '#5c6068',
+                            500: '#7c818c',
+                            400: '#9fa4b0',
+                            300: '#c5c9d3',
+                            200: '#e2e5eb',
+                            100: '#f0f2f6',
+                            50: '#f8f9fa',
+                        },
+                        accent: {
+                            DEFAULT: '#2a5b64',
+                            hover: '#1e4249',
+                            light: '#eaf2f4',
+                            dark: '#6aa8b4'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Newsreader"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        ::selection {
+            background-color: #2a5b64;
+            color: #ffffff;
+        }
+        .editorial-link {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            text-decoration-color: #9fa4b0;
+            transition: all 0.2s ease;
+        }
+        .editorial-link:hover {
+            text-decoration-color: #151618;
+            color: #151618;
+        }
+        .dark .editorial-link {
+            text-decoration-color: #5c6068;
+        }
+        .dark .editorial-link:hover {
+            text-decoration-color: #f0f2f6;
+            color: #f0f2f6;
+        }
+        #particle-canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            background: transparent;
+        }
+        @media print {
+            body {
+                background: white !important;
+                color: #000 !important;
+                font-size: 10pt;
+                line-height: 1.4;
+            }
+            .no-print {
+                display: none !important;
+            }
+            a {
+                text-decoration: none !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-warmbg text-ink-800 dark:bg-darkbg dark:text-ink-200 font-sans antialiased transition-colors duration-300">
+
+    <!-- TOP MINIMALIST NAV BAR -->
+    <header class="no-print sticky top-0 z-40 bg-warmbg/90 dark:bg-darkbg/90 backdrop-blur-md border-b border-ink-200/60 dark:border-ink-800/60 transition-colors">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="inline-flex items-center gap-2.5 text-base font-serif font-medium tracking-tight text-ink-900 dark:text-ink-50 hover:opacity-80 transition-opacity">
+                <span class="font-mono text-xs px-1.5 py-0.5 rounded border border-accent text-accent dark:border-accent-dark dark:text-accent-dark">MF</span>
+                <span>Mahmoud Faheem</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav aria-label="Primary Navigation" class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-widest text-ink-600 dark:text-ink-400 font-medium">
+                <a href="../index.html#about" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">About</a>
+                <a href="../index.html#projects" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Research</a>
+                <a href="../index.html#experience" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Experience</a>
+                <a href="../index.html#activities" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Activities</a>
+                <a href="../index.html#skills" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Skills</a>
+                <a href="../cv.html" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">CV</a>
+                <a href="../index.html#contact" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button id="themeToggle" aria-label="Toggle theme" class="p-2 text-ink-600 hover:text-ink-900 dark:text-ink-400 dark:hover:text-ink-100 rounded-full hover:bg-ink-100 dark:hover:bg-ink-800 transition">
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                </button>
+                <button id="mobileMenuBtn" aria-label="Open mobile menu" class="md:hidden p-2 text-ink-800 dark:text-ink-200">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 pt-2 pb-6 border-b border-ink-200 dark:border-ink-800 bg-warmbg dark:bg-darkbg text-sm space-y-3 font-serif">
+            <a href="../index.html#about" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">About</a>
+            <a href="../index.html#projects" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Research &amp; Projects</a>
+            <a href="../index.html#experience" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Experience</a>
+            <a href="../index.html#activities" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Publications &amp; Activities</a>
+            <a href="../index.html#skills" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Technical Skills</a>
+            <a href="../cv.html" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Curriculum Vitae</a>
+            <a href="../index.html#contact" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12 sm:py-16 space-y-12">
+        <!-- Breadcrumb & Header -->
+        <div class="space-y-4 border-b border-ink-200 dark:border-ink-800 pb-8">
+            <a href="../index.html#projects" class="inline-flex items-center gap-1.5 text-xs font-mono text-ink-500 hover:text-ink-900 dark:hover:text-ink-100 transition-colors">
+                <span>&larr; Back to Research &amp; Projects</span>
+            </a>
+
+            <div class="flex flex-wrap items-center gap-2 pt-2">
+                <span class="text-xs font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-medium">
+                    Literature Mining & Clinical Trial Curation
+                </span>
+                <span class="text-xs font-mono text-ink-400">&bull;</span>
+                <span class="text-xs font-mono text-ink-500">2020 – Present (Published Institutional Resource)</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl font-serif font-normal text-ink-900 dark:text-ink-50 leading-tight">
+                COCTAIL – COVID-19 Clinical Trial and Intervention Literature Hub
+            </h1>
+
+            <p class="text-base sm:text-lg font-serif italic text-ink-600 dark:text-ink-400 leading-relaxed">
+                An evidence-based literature repository mapping PubMed-indexed COVID-19 clinical and epidemiological trials.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-5 pt-2 text-sm font-sans">
+                <a href="https://host-pathogen.net/covid/coctail.html" target="_blank" rel="noopener noreferrer" class="text-ink-900 dark:text-ink-100 font-medium editorial-link">The Host-Pathogen Network &nearr;</a>
+                <a href="https://mahmoudfaheem.github.io/coctail/" target="_blank" rel="noopener noreferrer" class="text-ink-600 dark:text-ink-400 editorial-link">COCTAIL Mirror &nearr;</a>
+            </div>
+        </div>
+
+        <!-- 8-Part Academic Project Breakdown -->
+        <div class="space-y-10 text-base font-serif text-ink-800 dark:text-ink-200 leading-relaxed">
+            <section class="space-y-2">
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">1. Scientific Background &amp; Research Question</h2>
+                <p>During the rapid expansion of COVID-19 clinical and epidemiological literature, clinicians and researchers required a structured, verifiable index separating primary clinical trial reports from commentary and secondary reviews.</p>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">2. Objectives</h2>
+                <ul class="list-disc list-inside space-y-1.5"><li>Retrieve, filter, and systematically index PubMed-registered COVID-19 clinical and epidemiological trials.</li><li>Classify therapeutic interventions, trial designs, and publication metadata into an accessible public repository.</li><li>Maintain an institutional reference portal hosted for academic and clinical lookup.</li></ul>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">3. Specific Contribution</h2>
+                <p>Served as Database Developer and Lead Curator. Built the literature retrieval and curation pipeline, structured the trial metadata records, and maintained the institutional deployment on the Faculty of Pharmacy, Cairo University portal.</p>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">4. Methodology &amp; Technologies</h2>
+                <p>Automated PubMed/Entrez queries and text-mining scripts were combined with manual curation to verify trial identifiers, intervention classes, and study classifications prior to database indexing.</p>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">5. Key Outputs &amp; Results</h2>
+                <ul class="list-disc list-inside space-y-1.5"><li>Mapped and indexed over <strong>1,900 PubMed-indexed COVID-19 clinical and epidemiological trials</strong>.</li><li>Deployed as an official institutional resource on the Faculty of Pharmacy, Cairo University website.</li></ul>
+            </section>
+
+            <section class="space-y-2">
+                <h2 class="font-sans text-xs uppercase font-semibold tracking-wider text-accent dark:text-accent-dark">7. Related Presentations &amp; Scholarship</h2>
+                <p>Presented as a poster: <em>Text Mining &ndash; COCTAIL: The COVID-19 Clinical Trial and Intervention Literature Hub</em> (Prof. Ramy K. Aziz, Mahmoud Faheem, Shaimaa Hegazy) at the International Society for Computational Biology (ISCB) Conference, Colorado, USA, December 2021.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="no-print mt-20 border-t border-ink-200/60 dark:border-ink-800/60 py-8 bg-warmbg dark:bg-darkbg text-xs font-mono text-ink-500">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div>
+                &copy; <span id="yearSpan"></span> Mahmoud Faheem Mohamed Faheem
+            </div>
+            <div class="text-[11px] text-ink-400">
+                Microbial Genomics &bull; Antimicrobial Resistance &bull; Computational Biology
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const yearEl = document.getElementById('yearSpan');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        const themeToggleBtn = document.getElementById('themeToggle');
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+        initTheme();
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                if (typeof initParticles === 'function') initParticles();
+            });
+        }
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
