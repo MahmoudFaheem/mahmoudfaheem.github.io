@@ -135,6 +135,22 @@
             max-height: 480px;
             background: transparent;
         }
+
+        /* Repeatable entrance & tab-click transition animation */
+        @keyframes editorialFadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .tab-animate {
+            animation: editorialFadeSlide 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
         @media print {
             body {
                 background: white !important;
@@ -157,22 +173,21 @@
     <!-- TOP MINIMALIST NAV BAR -->
     <header class="no-print sticky top-0 z-40 bg-warmbg/90 dark:bg-darkbg/90 backdrop-blur-md border-b border-ink-200/60 dark:border-ink-800/60 transition-colors">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="inline-flex items-center gap-2.5 text-base font-serif font-medium tracking-tight text-ink-900 dark:text-ink-50 hover:opacity-80 transition-opacity">
+            <a href="index.html#about" class="nav-tab inline-flex items-center gap-2.5 text-base font-serif font-medium tracking-tight text-ink-900 dark:text-ink-50 hover:opacity-80 transition-opacity">
                 <span class="font-mono text-xs px-1.5 py-0.5 rounded border border-accent text-accent dark:border-accent-dark dark:text-accent-dark">MF</span>
                 <span>Mahmoud Faheem</span>
             </a>
 
             <!-- Desktop Links -->
             <nav aria-label="Primary Navigation" class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-widest text-ink-600 dark:text-ink-400 font-medium">
-                <a href="index.html#about" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">About</a>
-                <a href="index.html#projects" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Research</a>
-                <a href="index.html#experience" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Experience</a>
-                <a href="index.html#activities" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Activities</a>
-                <a href="index.html#skills" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Skills</a>
-                <a href="cv.html" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">CV</a>
-                <a href="index.html#contact" class="hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Contact</a>
+                <a href="index.html#about" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">About</a>
+                <a href="index.html#projects" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Research</a>
+                <a href="index.html#experience" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Experience</a>
+                <a href="index.html#activities" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Activities</a>
+                <a href="index.html#skills" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Skills</a>
+                <a href="cv.html" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">CV</a>
+                <a href="index.html#contact" class="nav-tab hover:text-ink-900 dark:hover:text-ink-100 transition-colors">Contact</a>
             </nav>
-
             <div class="flex items-center space-x-3">
                 <button id="themeToggle" aria-label="Toggle theme" class="p-2 text-ink-600 hover:text-ink-900 dark:text-ink-400 dark:hover:text-ink-100 rounded-full hover:bg-ink-100 dark:hover:bg-ink-800 transition">
                     <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
@@ -186,26 +201,24 @@
 
         <!-- Mobile Drawer -->
         <div id="mobileMenu" class="hidden md:hidden px-6 pt-2 pb-6 border-b border-ink-200 dark:border-ink-800 bg-warmbg dark:bg-darkbg text-sm space-y-3 font-serif">
-            <a href="index.html#about" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">About</a>
-            <a href="index.html#projects" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Research &amp; Projects</a>
-            <a href="index.html#experience" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Experience</a>
-            <a href="index.html#activities" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Publications &amp; Activities</a>
-            <a href="index.html#skills" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Technical Skills</a>
-            <a href="cv.html" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Curriculum Vitae</a>
-            <a href="index.html#contact" class="mobile-link block py-1 text-ink-700 dark:text-ink-300">Contact</a>
+            <a href="index.html#about" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">About</a>
+            <a href="index.html#projects" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">Research &amp; Projects</a>
+            <a href="index.html#experience" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">Experience</a>
+            <a href="index.html#activities" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">Publications &amp; Activities</a>
+            <a href="index.html#skills" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">Technical Skills</a>
+            <a href="cv.html" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">Curriculum Vitae</a>
+            <a href="index.html#contact" class="mobile-link nav-tab block py-1 text-ink-700 dark:text-ink-300">Contact</a>
         </div>
     </header>
 
     <!-- MAIN EDITORIAL CONTAINER -->
-    <main class="max-w-4xl mx-auto px-6 py-12 sm:py-16 space-y-20 sm:space-y-24">
+    <main id="mainContent" class="tab-animate max-w-4xl mx-auto px-6 py-12 sm:py-16 space-y-20 sm:space-y-24">
 
         <!-- 1. HERO & RESEARCH IDENTITY -->
         <section id="about" class="pt-2 scroll-mt-20">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
                 <div class="md:col-span-7 space-y-5">
                     <div class="space-y-2">
-                        <span class="text-xs uppercase tracking-[0.2em] font-mono text-ink-500 dark:text-ink-400 block">
-                        </span>
                         <h1 class="text-4xl sm:text-5xl font-serif font-normal text-ink-900 dark:text-ink-50 tracking-tight leading-[1.1]">
                             Mahmoud Faheem
                         </h1>
@@ -237,7 +250,7 @@
 
                     <!-- Links Row -->
                     <div class="flex flex-wrap items-center gap-5 pt-2 text-sm font-sans">
-                        <a href="#projects" class="inline-flex items-center gap-1.5 text-ink-900 dark:text-ink-100 font-medium editorial-link">
+                        <a href="#projects" class="nav-tab inline-flex items-center gap-1.5 text-ink-900 dark:text-ink-100 font-medium editorial-link">
                             <span>Explore Research Projects &rarr;</span>
                         </a>
                         <a href="cv.html" class="inline-flex items-center gap-1.5 text-ink-700 dark:text-ink-300 hover:text-ink-900 dark:hover:text-white editorial-link">
@@ -287,6 +300,7 @@
                         <div class="flex flex-wrap items-center gap-2">
                             <span class="text-xs font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-medium">
                                 Scientific Database &bull; 2017 &mdash; Present
+                            </span>
                         </div>
                         <a href="https://mahmoudfaheem.github.io/amr-portal/" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-ink-900 dark:text-ink-100 font-medium editorial-link">
                             B-LAC Database &rarr;
@@ -309,6 +323,7 @@
                             <a href="projects/amr-database.html" class="text-accent dark:text-accent-dark font-medium editorial-link">Project Details &rarr;</a>
                             <a href="amr-database.html" target="_blank" rel="noopener noreferrer" class="text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-white editorial-link">Project Details &nearr;</a>
                         </div>
+                    </div>
                 </article>
 
                 <!-- Project 2: COCTAIL Hub -->
@@ -318,7 +333,7 @@
                             <span class="text-xs font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-medium">
                                 Literature Mining &amp; Database &bull; 2020 &mdash; Present
                             </span>
-                            </div>
+                        </div>
                         <div class="flex flex-col gap-1">
                             <a href="https://host-pathogen.net/covid/coctail.html" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-ink-900 dark:text-ink-100 font-medium editorial-link">
                                 Host-Pathogen Network &rarr;
@@ -346,6 +361,7 @@
                             <a href="https://host-pathogen.net/covid/coctail.html" target="_blank" rel="noopener noreferrer" class="text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-white editorial-link">Host-Pathogen Network &nearr;</a>
                             <a href="https://mahmoudfaheem.github.io/coctail/" target="_blank" rel="noopener noreferrer" class="text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-white editorial-link">COCTAIL Mirror &nearr;</a>
                         </div>
+                    </div>
                 </article>
 
                 <!-- Project 3: Resistome-Lab -->
@@ -354,8 +370,6 @@
                         <div class="flex flex-wrap items-center gap-2">
                             <span class="text-xs font-mono uppercase tracking-wider text-accent dark:text-accent-dark font-medium">
                                 Open-Source Software &amp; Workflows &bull; Active
-                            </span>
-                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300">
                             </span>
                         </div>
                         <a href="https://github.com/Resistome-lab" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-ink-900 dark:text-ink-100 font-medium editorial-link">
@@ -379,6 +393,7 @@
                             <a href="projects/resistome-lab.html" class="text-accent dark:text-accent-dark font-medium editorial-link">Explore Workflows &amp; Tools &rarr;</a>
                             <a href="https://github.com/Resistome-lab" target="_blank" rel="noopener noreferrer" class="text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-white editorial-link">github.com/Resistome-lab &nearr;</a>
                         </div>
+                    </div>
                 </article>
             </div>
         </section>
@@ -410,7 +425,7 @@
                         Programming &amp; Scripting
                     </h3>
                     <p class="font-serif text-ink-700 dark:text-ink-300 leading-relaxed">
-                        R (RStudio), Python, Bash scripting (Linux/Unix), and AWK for data processing and statistical visualization; introductory experience with SQL and PHP for relational web databases.
+                        R (RStudio), Python, Bash scripting (Linux/Unix), and AWK for data processing and statistical visualization; introductory experience with SQL and PHP.
                     </p>
                 </div>
 
@@ -783,7 +798,6 @@
         <!-- 8. CONTACT -->
         <section id="contact" class="space-y-6 pt-6 border-t border-ink-200 dark:border-ink-800 scroll-mt-20">
             <div class="space-y-2">
-                <span class="text-[11px] font-mono uppercase tracking-widest text-ink-500 block">07 &mdash; Inquiries</span>
                 <h2 class="text-2xl sm:text-3xl font-serif text-ink-900 dark:text-ink-50 font-normal">
                     Contact
                 </h2>
@@ -802,9 +816,7 @@
                     <div class="flex flex-wrap items-center gap-4 text-ink-800 dark:text-ink-200">
                         <a href="https://linkedin.com/in/mahmoudfaheem" target="_blank" rel="noopener noreferrer" class="editorial-link">LinkedIn &nearr;</a>
                         <a href="https://github.com/MahmoudFaheem" target="_blank" rel="noopener noreferrer" class="editorial-link">GitHub &nearr;</a>
-                        <a href="https://github.com/Resistome-lab" target="_blank" rel="noopener noreferrer" class="editorial-link">Resistome-Lab &nearr;</a>
                         <a href="https://twitter.com/faheemmfm" target="_blank" rel="noopener noreferrer" class="editorial-link">X &nearr;</a>
-                        <a href="cv.html" class="editorial-link">Curriculum Vitae &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -867,7 +879,7 @@
         });
     </script>
 
-    <!-- PURE POINTILLIST PARTICLE CANVAS SCRIPT -->
+    <!-- PURE POINTILLIST PARTICLE CANVAS & TAB TRANSITION SCRIPT -->
     <script>
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
@@ -892,19 +904,21 @@
             constructor(originX, originY, radius, alpha, dotColor) {
                 this.originX = originX;
                 this.originY = originY;
+                this.radius = radius;
+                this.alpha = alpha;
+                this.dotColor = dotColor;
+                this.scatter();
+            }
 
+            scatter() {
                 const angle = Math.random() * Math.PI * 2;
                 const dist = Math.random() * 240 + 80;
-                this.x = originX + Math.cos(angle) * dist;
-                this.y = originY + Math.sin(angle) * dist;
-
+                this.x = this.originX + Math.cos(angle) * dist;
+                this.y = this.originY + Math.sin(angle) * dist;
                 this.vx = (Math.random() - 0.5) * 5;
                 this.vy = (Math.random() - 0.5) * 5;
                 this.ease = Math.random() * 0.038 + 0.032;
                 this.friction = 0.88;
-                this.radius = radius;
-                this.alpha = alpha;
-                this.dotColor = dotColor;
             }
 
             update() {
@@ -936,6 +950,19 @@
                 ctx.fillStyle = `${this.dotColor}${this.alpha})`;
                 ctx.fill();
             }
+        }
+
+        function scatterAllParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].scatter();
+            }
+        }
+
+        function triggerEntranceAnimation(targetElement) {
+            if (!targetElement) return;
+            targetElement.classList.remove('tab-animate');
+            void targetElement.offsetWidth; // force reflow so animation replays every time
+            targetElement.classList.add('tab-animate');
         }
 
         function initParticles() {
@@ -997,7 +1024,35 @@
             animationFrameId = requestAnimationFrame(animate);
         }
 
-        window.addEventListener('DOMContentLoaded', initParticles);
+        window.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+
+            // Replay the initial transition animation on every click of any navigation tab
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    const href = tab.getAttribute('href') || '';
+                    const hashIndex = href.indexOf('#');
+
+                    // Replay particle scatter-and-assemble transition
+                    scatterAllParticles();
+
+                    // Replay section/page fade-in entrance transition
+                    const mainEl = document.getElementById('mainContent');
+                    triggerEntranceAnimation(mainEl);
+
+                    if (hashIndex !== -1) {
+                        const targetId = href.slice(hashIndex + 1);
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            e.preventDefault();
+                            triggerEntranceAnimation(targetSection);
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            history.replaceState(null, '', '#' + targetId);
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
